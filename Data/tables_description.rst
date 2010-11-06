@@ -33,7 +33,7 @@ used to perform burnup and storage calculations.
 1.  **assembly_id**:  A unique identfier for each fuel assembly.
 2.  **mass**: The mass of the initial core loading in kg of Uranium.
 3.  **enrichment**: The initial enrichment of U-235 in the fresh fuel as a mass fraction.
-4.  **burnup**: The discharge burnup of the assembly in MWd/kgIHM.
+4.  **burnup**: The reported discharge burnup of the assembly in MWd/kgIHM.
 5.  **assembly_type**: The assembly type flag.
 6.  **assembly_status**: The status code for each assembly.  A blank in this field represents standard fuel, 
     while a code represents failed or nonstandard fuel.
@@ -42,3 +42,13 @@ used to perform burnup and storage calculations.
 9.  **discharge_date**: The final dischage date of the assmbley, related to discharge_cycle.
 
 
+---------
+Used Fuel
+---------
+This table describes the fuel assembly after it has been burned in the reactor.
+
+1.  **assembly_id**:  A unique identfier for each fuel assembly.  This matches the id in the fresh fuel info table.
+2.  **burnup**: The calculated discharge burnup of the assembly in MWd/kgIHM.
+3.  **mass**: The mass of the following used fuel vector in kgUF/kgIHM.  Represents the sum of all following columns.
+4.  **isotopics**:  All following isotopic fields represent the mass fraction of this isotope in the spent fuel.
+    Therefore these feilds have units of kg{Isotope}/kgIHM.
