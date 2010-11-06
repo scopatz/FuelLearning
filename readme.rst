@@ -1,1 +1,1 @@
-A basic fuel learbing algorithm.
+A basic fuel learning algorithm.
