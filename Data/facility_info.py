@@ -10,6 +10,22 @@ def get_type_map(map_file):
         type_map = dict([line.split()[:2] for line in f])
     return type_map
 
+def get_reactor_id_map(hdf5_file):
+    # Open the HDF5 file
+    opened_here = False
+    if isinstance(hdf5_file, basestring):
+        opened_here = True
+        hdf5_file = tb.openFile(hdf5_file, 'r')
+
+    rx_id = dict([ (row['reactor_id'], row['name']) for row in hdf5_file.root.facility_info ])
+
+    # Close the HDF5 file
+    if opened_here:
+        hdf5_file.close()
+
+    return rx_id
+    
+
 class FacilityInfo(tb.IsDescription):
     name         = tb.StringCol(itemsize=25, pos=0)
     full_name    = tb.StringCol(itemsize=25, pos=1)
@@ -79,4 +95,5 @@ def facility_info(hdf5_file, csv_file="raw/tblFacility.csv", map_file="raw/facil
 
 if __name__ == "__main__":
     #print get_type_map("raw/facility_type_map.txt")
-    facility_info("test.h5")
+    #facility_info("test.h5")
+    print get_reactor_id_map("test.h5")

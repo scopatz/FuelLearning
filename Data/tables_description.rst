@@ -1,14 +1,12 @@
 =====================
 Description of Tables
 =====================
-
 Here we describe the coulumns in the various tables and list their units.
 
 
 -------------
 Facility Info
 -------------
-
 This table gives information on the each of the facilities present.  Here are what the columns mean:
 
 1.  **name**: Natural name of the facility that may be read nicley by a computer
@@ -24,4 +22,23 @@ This table gives information on the each of the facilities present.  Here are wh
 9.  **city**: Contact city.
 10. **state**: Contact state.
 11. **zip**: Contact zip code.
+
+
+---------------
+Fresh Fuel Info
+---------------
+The fresh fuel info tables specify the intial loading parameters of each assembly for each reactor.  These are 
+used to perform burnup and storage calculations.
+
+1.  **assembly_id**:  A unique identfier for each fuel assembly.
+2.  **mass**: The mass of the initial core loading in kg of Uranium.
+3.  **enrichment**: The initial enrichment of U-235 in the fresh fuel as a mass fraction.
+4.  **burnup**: The discharge burnup of the assembly in MWd/kgIHM.
+5.  **assembly_type**: The assembly type flag.
+6.  **assembly_status**: The status code for each assembly.  A blank in this field represents standard fuel, 
+    while a code represents failed or nonstandard fuel.
+7.  **storage_id**: The pool storage ID or dry storage ID where the assembly is stored.
+8.  **discharge_cycle**: The discharge cycle number.
+9.  **discharge_date**: The final dischage date of the assmbley, related to discharge_cycle.
+
 
