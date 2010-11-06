@@ -1,0 +1,119 @@
+0101	PWR	Farley 1	Southern Nuclear Operating Company		
+0102	PWR	Farley 2	Southern Nuclear Operating Company		
+0301	PWR	Palo Verde 1	Arizona Public Service Company		
+0302	PWR	Palo Verde 2	Arizona Public Service Company		
+0303	PWR	Palo Verde 3	Arizona Public Service Company		
+0401	PWR	Arkansas Nuclear One 1	"Entergy Operations, Inc."		
+0402	PWR	Arkansas Nuclear One 2	Entergy Operations Inc.		
+0501	PWR	Calvert Cliffs 1	Constellation Energy		
+0502	PWR	Calvert Cliffs 2	Constellation Energy		
+0601	BWR	Pilgrim 1	Entergy Nuclear Generation Company		
+0701	BWR	Brunswick 1	Progress Energy - Carolina		
+0702	BWR	Brunswick 2	Progress Energy - Carolina		
+0703	PWR	Harris 1	Progress Energy - Carolina		
+0705	PWR	HB Robinson 2	Progress Energy - Carolina		
+0901	BWR	Perry 1	FirstEnergy Nuclear Operating Company		
+1001	PWR	Braidwood 1	"Exelon Generation Company, LLC"		
+1002	PWR	Braidwood 2	"Exelon Generation Company, LLC"		
+1003	PWR	Byron 1	"Exelon Generation Company, LLC"		
+1004	PWR	Byron 2	"Exelon Generation Company, LLC"		
+1005	BWR	Dresden 1	"Exelon Generation Company, LLC"		
+1006	BWR	Dresden 2	"Exelon Generation Company, LLC"		
+1007	BWR	Dresden 3	"Exelon Generation Company, LLC"		
+1008	BWR	LaSalle County 1	"Exelon Generation Company, LLC"		
+1009	BWR	LaSalle County 2	"Exelon Generation Company, LLC"		
+1010	BWR	Quad Cities 1	"Exelon Generation Company, LLC"		
+1011	BWR	Quad Cities 2	"Exelon Generation Company, LLC"		
+1012	PWR	Zion 1	"Exelon Generation Company, LLC"		
+1013	PWR	Zion 2	"Exelon Generation Company, LLC"		
+1101	PWR	Indian Point 1	Entergy Nuclear Northeast		
+1102	PWR	Indian Point 2	Entergy Nuclear Northeast		
+1201	BWR	Big Rock Point	Consumers Energy Company		
+1204	PWR	Palisades	Consumers Energy Company		
+1301	BWR	La Crosse	Dairyland Power Cooperative		
+1402	BWR	Enrico Fermi 2	Detroit Edison Company		
+1501	PWR	Catawba 1	Duke Power Company		
+1502	PWR	Catawba 2	Duke Power Company		
+1504	PWR	McGuire 1	Duke Power Company		
+1505	PWR	McGuire 2	Duke Power Company		
+1506	PWR	Oconee 1	Duke Power Company		
+1507	PWR	Oconee 2	Duke Power Company		
+1508	PWR	Oconee 3	Duke Power Company		
+1601	PWR	Beaver Valley 1	FirstEnergy Nuclear Operating Company		
+1602	PWR	Beaver Valley 2	FirstEnergy Nuclear Operating Company		
+1701	PWR	Crystal River 3	Progress Energy - Florida		
+1801	PWR	St. Lucie 1	Florida Power & Light Co.		
+1802	PWR	St. Lucie 2	Florida Power & Light Co.		
+1803	PWR	Turkey Point 3	Florida Power & Light Co.		
+1804	PWR	Turkey Point 4	Florida Power & Light Co.		
+1901	PWR	Three Mile Island 1	"AmerGen Energy Company, LLC"		
+1903	BWR	Oyster Creek	"AmerGen Energy Company,  LLC"		
+2001	BWR	Hatch 1	Southern Nuclear Operating Company		
+2002	BWR	Hatch 2	Southern Nuclear Operating Company		
+2003	PWR	Vogtle 1	Southern Nuclear Operating Company		
+2004	PWR	Vogtle 2	Southern Nuclear Operating Company		
+2101	BWR	River Bend 1	Entergy Operations Inc.		
+2201	PWR	South Texas 1	STP Nuclear Operating Company		
+2202	PWR	South Texas 2	STP Nuclear Operating Company		
+2301	BWR	Clinton  1	"AmerGen Energy Company, L.L.C."		
+2401	BWR	Duane Arnold	Nuclear Management Company		
+2501	PWR	Wolf Creek 1	Wolf Creek Nuclear Operating Corporation		
+2701	PWR	Waterford 3	"Entergy Operations, Inc."		
+2801	PWR	Maine Yankee	Maine Yankee Atomic Power Company		
+2901	BWR	Grand Gulf 1	"Entergy Operations, Inc"		
+3001	BWR	Cooper Station	Nebraska Public Power District		
+3101	BWR	Nine Mile Point 1	Constellation Energy		
+3102	BWR	Nine Mile Point 2	Constellation Energy		
+3201	BWR	Millstone 1	Dominion Nuclear Connecticut		
+3202	PWR	Millstone 2	Dominion Nuclear Connecticut		
+3203	PWR	Millstone 3	Dominion Nuclear Connecticut		
+3301	BWR	Monticello	Xcel Energy		
+3302	PWR	Prairie Island 1	Northern States Power Company		
+3303	PWR	Prairie Island 2	Northern States Power Company		
+3401	PWR	Fort Calhoun	Omaha Public Power District		
+3501	PWR	Diablo Canyon  1	Pacific Gas and Electric Company		
+3502	PWR	Diablo Canyon 2	Pacific Gas and Electric Company		
+3503	BWR	Humboldt Bay	Pacific Gas and Electric Company		
+3601	BWR	Susquehanna  1	PPL Susquehanna LLC		
+3602	BWR	Susquehanna 2	PPL Susquehanna LLC		
+3701	BWR	Limerick 1	"Exelon Generation Company, LLC"		
+3702	BWR	Limerick 2	"Exelon Generation Company, LLC"		
+3704	BWR	Peach Bottom 2	"Exelon Generation Company, LLC"		
+3705	BWR	Peach Bottom 3	"Exelon Generation Company, LLC"		
+3801	PWR	Trojan	Portland General Electric		
+3901	BWR	Fitzpatrick	Entergy Nuclear Generating Company		
+3902	PWR	Indian Point 3	Entergy Nuclear Generating Company		
+4201	BWR	Hope Creek	Public Service Electric and Gas Co.		
+4202	PWR	Salem 1	Public Service Electric and Gas Co.		
+4203	PWR	Salem 2	Public Service Electric and Gas Co.		
+4401	PWR	R. E. Ginna	Rochester Gas and Electric Corporation		
+4501	PWR	Rancho Seco	Sacramento Municipal Utility District		
+4601	PWR	Summer	South Carolina Electric and Gas Company		
+4701	PWR	San Onofre  1	Southern California Edison Co.		
+4702	PWR	San Onofre  2	Southern California Edison Co.		
+4703	PWR	San Onofre 3	Southern California Edison Co.		
+4803	BWR	Browns Ferry 1	Tennessee Valley Authority		
+4804	BWR	Browns Ferry 2	Tennessee Valley Authority		
+4805	BWR	Browns Ferry 3	Tennessee Valley Authority		
+4808	PWR	Sequoyah 1	Tennessee Valley Authority		
+4809	PWR	Sequoyah 2	Tennessee Valley Authority		
+4810	PWR	Watts Bar 1	Tennessee Valley Authority		
+4901	PWR	Comanche Peak 1	Texas Utilities Electric Company		
+4902	PWR	Comanche Peak 2	Texas Utilities Electric Company		
+5001	PWR	Davis-Besse	FirstEnergy Nuclear Operating Company		
+5101	PWR	Callaway	Ameren UE		
+5201	PWR	North Anna  1	Dominion Virginia Power		
+5202	PWR	North Anna 2	Dominion Virginia Power		
+5203	PWR	Surry 1	Dominion Virginia Power		
+5204	PWR	Surry 2	Dominion Virginia Power		
+5302	BWR	Columbia	Energy Northwest		
+5401	PWR	Point Beach  1	We Energies		
+5402	PWR	Point Beach  2	We Energies		
+5501	PWR	Kewaunee	Wisconsin Public Service Corporation		
+5601	PWR	Yankee Rowe	Yankee Atomic Electric Company		
+5701	PWR	Haddam Neck	Connecticut Yankee Atomic Power Company		
+5801	PWR	Cook 1	American Electric Power		
+5802	PWR	Cook 2	American Electric Power		
+5901	PWR	Seabrook	North Atlantic Energy Service Corporation		
+6001	BWR	Vermont Yankee	Entergy Nuclear Northeast		
+6201	BWR	GE Vallecitos	GE Vallecitos

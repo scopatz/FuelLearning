@@ -1,0 +1,8 @@
+doc/build/
+build/
+*.pyc
+*.save
+*.bak
+*.mdb
+*.doc
+*.h5
