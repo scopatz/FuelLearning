@@ -48,7 +48,7 @@ Used Fuel
 This table describes the fuel assembly after it has been burned in the reactor.
 
 1.  **assembly_id**:  A unique identfier for each fuel assembly.  This matches the id in the fresh fuel info table.
-2.  **burnup**: The calculated discharge burnup of the assembly in MWd/kgIHM.
+2.  **discharge_k**: The calculated multiplication factor at discharge given a burnup and initial enrichment.
 3.  **mass**: The mass of the following used fuel vector in kgUF/kgIHM.  Represents the sum of all following columns.
 4.  **isotopics**:  All following isotopic fields represent the mass fraction of this isotope in the spent fuel.
     Therefore these feilds have units of kg{Isotope}/kgIHM.
