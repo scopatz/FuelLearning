@@ -25,7 +25,7 @@ UsedFuel = {
 nbuf = len(UsedFuel)
 i2t = bp.isos2track()
 
-for i in range(len(i2t)):
+for i in xrange(len(i2t)):
     UsedFuel[bp.isoname.zzaaam_2_LLAAAM(i2t[i])] = tb.Float64Col(pos=nbuf + i)
 
 # Init the LWR object, only need one!
@@ -104,7 +104,31 @@ def calc_used_fuel_row(rx_group, n, fuel_cycle):
     ffi_row = rx_group.fresh_fuel_info[n]
     k, mass, isovec = fuel_cycle(ffi_row['enrichment'], ffi_row['burnup'])
 
-    print ffi_row['burnup'], k, mass
+    # Get used fuel row
+    rx_uf_table = rx_group.used_fuel
+    uf_row = rx_uf_table.row
+
+    # Set row values
+    uf_row['assembly_id'] = ffi_row['assembly_id']
+    uf_row['discharge_k'] = k
+    uf_row['mass'] = mass
+    for i in xrange(len(i2t)):
+        uf_row[bp.isoname.zzaaam_2_LLAAAM(i2t[i])] = isovec[i2t[i]]
+
+    if n < len(rx_uf_table):
+        for row in rx_uf_table.iterrows(n, n+1, 1):
+            for colname in rx_uf_table.colnames:
+                row[colname] = uf_row[colname]
+            row.update()
+    elif n == len(rx_uf_table):
+        uf_row.append()
+    else:
+        temp_row = [''] + [-1.0]*(2+len(i2t))
+        temp_rows = [temp_row] * (n - len(rx_uf_table))
+        rx_uf_table.append(temp_rows)
+        uf_row.append()        
+
+    rx_uf_table.flush()
 
 def calc_used_fuel_rows(hdf5_file, rx_list=None, slice=(0,-1, 1)):
     # Open the HDF5 file
@@ -132,8 +156,11 @@ def calc_used_fuel_rows(hdf5_file, rx_list=None, slice=(0,-1, 1)):
         elif len(slice) == 3:
             rx_slice = [slice[0], slice[1], slice[2]]
 
+        if rx_slice[0] < 0:
+            rx_slice[0] = len(rx_group.fresh_fuel_info) + rx_slice[0]
+
         if rx_slice[1] < 0:
-            rx_slice[1] = len(rx_group.fresh_fuel_info) + rx_slice[1]
+            rx_slice[1] = len(rx_group.fresh_fuel_info) + rx_slice[1] + 1
 
         for n in xrange(*rx_slice):
             calc_used_fuel_row(rx_group, n, fuel_cycle_only_burn)
