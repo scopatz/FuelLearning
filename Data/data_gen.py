@@ -18,6 +18,11 @@ def main():
                   help="Specify the rows for which to do the following calculation. " + \
                        "Uses a list or tuple to specify the slice: " + \
                        "e.g. '[1, -1, 100]' or '(50, 100)'.")
+    parser.add_option("--fc",
+                  dest="fuel_cycle", default=0, type="int",
+                  help="Specify the fuel cycle to use from the following options:\n" + \
+                       "  0: Only burnup calculation.\n" + \
+                       "  1: Burn & store until time 'now'.")
     parser.add_option("-f", "--facility-info",
                   action="store_true", dest="fac_info", default=False,
                   help="Generate the facility info table.")
@@ -71,7 +76,7 @@ def main():
 
     # Calculate used fuel rows
     if options.calc_used_fuel:
-        calc_used_fuel_rows(filename, rx_list, slice)
+        calc_used_fuel_rows(filename, rx_list, slice, options.fuel_cycle)
 
 if __name__ == "__main__":
     main()

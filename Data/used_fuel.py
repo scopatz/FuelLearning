@@ -34,6 +34,9 @@ lwrd = bp.LWRDefaults()
 lwrd.batches = 1
 lwr = bp.LightWaterReactor1G(lwr_data, lwrd, "LWR")
 
+# Init the storage object, we only need one
+stor = bp.Storage("Storage")
+t_now = time.time()  # Use the same time 'now' value for all runs.
 
 ############################
 ### Fuel Cycle Functions ###
@@ -47,7 +50,10 @@ lwr = bp.LightWaterReactor1G(lwr_data, lwrd, "LWR")
 #   * mass: mass of output mass stream
 #   * isovec: output isotopic mass stream multiplied by mass
 
-def fuel_cycle_only_burn(x, BUt):
+# Optionally, we might also take a discharge time value 
+#   * t: time that assembly was permenatly discharged from the reactor, sec from epoch
+
+def fuel_cycle_only_burn(x, BUt, t=t_now):
     # Re-initialize the LWR 
     leu = bp.MassStream({922350: x, 922380: 1.0 - x}, 1.0, "LEU")
     lwr.TargetBU = BUt
@@ -66,6 +72,37 @@ def fuel_cycle_only_burn(x, BUt):
     lwr_out = lwr.IsosOut
 
     return lwr.k, lwr_out.mass, lwr_out.multByMass()
+
+def fuel_cycle_burn_and_store(x, BUt, t=t_now):
+    # Re-initialize the LWR 
+    leu = bp.MassStream({922350: x, 922380: 1.0 - x}, 1.0, "LEU")
+    lwr.TargetBU = BUt
+    lwr.IsosIn = leu
+
+    # Find the discharge fluence & isotopics
+    # This is a subsititute for doCalc()
+    lwr.foldMassWeights()
+    fp = lwr.FluenceAtBU(BUt)
+    lwr.fd = fp.f
+    lwr.Fd = fp.F
+    lwr.BUd = BUt
+    lwr.k = lwr.batchAveK(BUt)
+    lwr.calcOutIso()
+
+    lwr_out = lwr.IsosOut
+
+    # The time since discharge
+    td = t_now - t
+
+    # Storage / Decay calculation
+    stor_out = stor.doCalc(lwr_out, td)
+
+    return lwr.k, stor_out.mass, stor_out.multByMass()
+
+fuel_cycles = {
+    0: fuel_cycle_only_burn, 
+    1: fuel_cycle_burn_and_store, 
+    }
 
 ###########################
 ### HDF5 File functions ###
@@ -102,8 +139,9 @@ def make_used_fuel_tables(hdf5_file, rx_list=None):
         hdf5_file.close()
 
 def calc_used_fuel_row(rx_group, n, fuel_cycle):
+    # Calculate the mass stream given the fuel cycle and assembly info
     ffi_row = rx_group.fresh_fuel_info[n]
-    k, mass, isovec = fuel_cycle(ffi_row['enrichment'], ffi_row['burnup'])
+    k, mass, isovec = fuel_cycle(ffi_row['enrichment'], ffi_row['burnup'], ffi_row['discharge_date'])
 
     # Get used fuel row
     rx_uf_table = rx_group.used_fuel
@@ -131,7 +169,7 @@ def calc_used_fuel_row(rx_group, n, fuel_cycle):
 
     rx_uf_table.flush()
 
-def calc_used_fuel_rows(hdf5_file, rx_list=None, slice=(0,-1, 1)):
+def calc_used_fuel_rows(hdf5_file, rx_list=None, slice=(0,-1, 1), fc_flag=0):
     # Open the HDF5 file
     opened_here = False
     if isinstance(hdf5_file, basestring):
@@ -167,9 +205,10 @@ def calc_used_fuel_rows(hdf5_file, rx_list=None, slice=(0,-1, 1)):
         if rx_slice[1] < 0:
             rx_slice[1] = len(rx_group.fresh_fuel_info) + rx_slice[1] + 1
 
+        # Run the calculations for the specified rows!
         t1 = time.time()
         for n in xrange(*rx_slice):
-            calc_used_fuel_row(rx_group, n, fuel_cycle_only_burn)
+            calc_used_fuel_row(rx_group, n, fuel_cycles[fc_flag])
 
             if n%100 == 0:
                 t2 = time.time()
