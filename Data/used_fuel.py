@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import tables as tb
 
@@ -147,6 +148,10 @@ def calc_used_fuel_rows(hdf5_file, rx_list=None, slice=(0,-1, 1)):
     # Make new used fuel tables
     for rx in rx_list:
         rx_group = getattr(h5r, rx)
+        rx_num = len(rx_group.fresh_fuel_info)
+
+        sys.stdout.write(rx)
+        sys.stdout.flush()
 
         # Determine slice for this reactor
         if len(slice) == 1:
@@ -162,8 +167,19 @@ def calc_used_fuel_rows(hdf5_file, rx_list=None, slice=(0,-1, 1)):
         if rx_slice[1] < 0:
             rx_slice[1] = len(rx_group.fresh_fuel_info) + rx_slice[1] + 1
 
+        t1 = time.time()
         for n in xrange(*rx_slice):
             calc_used_fuel_row(rx_group, n, fuel_cycle_only_burn)
+
+            if n%100 == 0:
+                t2 = time.time()
+                sys.stdout.write( '\r{0}... n = {1}/{2}; rate = {3:.3f} n/s'.format(rx, n, rx_num, 100.0/(t2 - t1)) )
+                sys.stdout.flush()
+                t1 = t2
+
+        t2 = time.time()
+        sys.stdout.write( '\r{0}... n = {1}/{2}; rate = {3:.3f} n/s\n'.format(rx, n+1, rx_num, 100.0/(t2 - t1)) )
+        sys.stdout.flush()
 
     # Close the HDF5 file
     if opened_here:
